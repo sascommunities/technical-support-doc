@@ -122,7 +122,7 @@ ods tagsets.tableeditor close;
 
 The above example code produces the following output:
 
-![](images/Autofilters.png)
+![](images/Images%20or%20Logos.png)
 * * *
 
 Freezing Row and Column Headers
@@ -141,10 +141,6 @@ ods tagsets.tableeditor file="c:\\temp.html"
 proc print data=sashelp.class;
 run;
 ```
-
-The above example code produces the following output:
-
-![](images/.png)
 
 * * *
 
@@ -193,7 +189,7 @@ ods tagsets.tableeditor close;
 
 The above example code produces the following output:
 
-![](images/pagesetup.jpg)
+![](images/Page%20Setup.jpg)
 * * *
 
 Zoom
@@ -285,7 +281,7 @@ ods tagsets.tableeditor close;
 
 The above example code produces the following output:
 
-![](images/Summary-Excluded.png)
+![](images/Summary%20Excluded.png)
 
 * * *
 
@@ -371,10 +367,6 @@ run;
 ods tagsets.tableeditor close;
 ```
 
-The above example code produces the following output:
-
-![](images/)
-
 * * *
 
 Informational Options
@@ -421,7 +413,7 @@ ods tagsets.tableeditor close;
 
 The above example code produces the following output:
 
-![](images/.Save-As)
+![](images/Save%20As.png)
 * * *
 
 Exporting Data
@@ -445,7 +437,7 @@ ods tagsets.tableeditor close;
 
 The above example code produces the following output:
 
-![](images/Exporting-Data.png)
+![](images/Exporting%20Data.png)
 
 * * *
 
