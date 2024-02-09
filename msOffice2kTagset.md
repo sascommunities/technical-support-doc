@@ -1,4 +1,4 @@
-Base SAS: The MSOffice2K\_x Tagset Adds Options to the MSOffice2K Tagset | SAS Support           
+Base SAS: The MSOffice2K\_x Tagset Adds Options to the MSOffice2K Tagset | SAS Support          
 
 The MSOffice2K\_x Tagset Adds Options to the MSOffice2K Tagset
 --------------------------------------------------------------
@@ -6,6 +6,28 @@ The MSOffice2K\_x Tagset Adds Options to the MSOffice2K Tagset
 Chevell Parker, SAS Institute
 
 * * *
+
+[Introduction](#Introduction)
+
+[Page Setup](#Page-Setup)
+
+[Worksheet Options](#Worksheet-Options)
+
+[Display Options](#Display-Options)
+
+[Formatting Data](#Formatting-Data)
+
+[Multiple Worksheets per Workbook](#Multiple-Worksheets-per-Workbook)
+
+[Rotated Column Headers](#Rotated-Column-Headers)
+
+[Paneling](#Paneling)
+
+[Page Breaks](#Page-Breaks)
+
+[Excel Macros](#Excel-Macros)
+
+[Excel Style Options](#Excel-Style-Options)
 
 ### Introduction
 
@@ -17,6 +39,7 @@ This section provides example code created with the sample Tagsets.MSOffice2K\_x
 
 You can modify the values that make up the page setup such as the scaling for printing using the SCALE=. The header and footer values can be modified using the PRINT\_HEADER= and the PRINT\_FOOTER= options. The left, right, top, and bottom margins can be modified using the MARGIN= option. The margins can also be modified using the LEFT\_MARGIN=, RIGHT\_MARGIN=, TOP\_MARGIN=, and BOTTOM\_MARGIN= options. The header and footer margins can be modified using the PRNT\_HEADER\_MARGIN and PRINT\_FOOTER\_MARGIN options, the sheet orientation using the ORIENTATION= option, and the paper size using the PAPERSIZE= option. The FITTOPAGE= option can be used to fit the output to a page. Also the PAGES\_FITHEIGHT= and the PAGES\_FITWIDTH= options can be use to fit the output to a specified number of pages. Other options such as DRAFTQUALITY=, GRIDLINES=, and BLACKANDWHITE= can be used to modify the default print options.
 
+``` 
   ods tagsets.msoffice2k\_x file="c:\\temp\\pagestup.xls" style=normal
       options( doc="help"
                scale="85"
@@ -37,9 +60,10 @@ You can modify the values that make up the page setup such as the scaling for pr
   proc print data=sashelp.class;
   run;
 
-  ods tagsets.msoffice2k\_x close;
+  ods tagsets.msoffice2k\_x close;  
+```
 
-![](pagesetup.jpg)
+![](/images/pagesetup.jpg)
 
 * * *
 
@@ -47,6 +71,7 @@ You can modify the values that make up the page setup such as the scaling for pr
 
 You can use worksheet options such as ZOOM= to change the worksheet zoom, and FITTOPAGE= to change the fittopage setting. The SHEET\_NAME= option can be used to change the sheet name of the worksheet. The TABCOLOR= option can also be specified to add color to the tab. The end of the table contains a blue horizontal rule which can be controlled by specifying the PAGEBREAK= option. Titles and footnotes can be removed by specifying the EMBEDDED\_TITLES=, EMBEDDED\_FOOTNOTES=, and EMBEDDED\_TITLES\_ONCE=.
 
+```
   ods tagsets.msoffice2k\_x file="c:\\temp\\worksheetoption.xls" style=normal
       options( zoom="70"
                fittopage="yes"
@@ -61,8 +86,9 @@ You can use worksheet options such as ZOOM= to change the worksheet zoom, and FI
   run;
 
   ods tagsets.msoffice2k\_x close;
+```
 
-![](worksheet.jpg)
+![](images/worksheet.jpg)
 
 * * *
 
@@ -70,6 +96,7 @@ You can use worksheet options such as ZOOM= to change the worksheet zoom, and FI
 
 Display options can be added to the output to change the appearance, such as AUTOFILTER= to add filters to the column headers. Headers and row headers can be frozen by using the FROZEN\_HEADER= and the FROZEN\_ROWHEADERS= options. These options allow you specify the ROW or column number to freeze in the output. Images or logos can be added using the IMAGE\_PATH= option to specify the path an name of the image to be displayed. The height and width of the image can be specified using the IMAGE\_HEIGHT= and IMAGE\_WIDTH= options.
 
+```
   ods tagsets.msoffice2k\_x file="c:\\temp\\display.xls" style=normal
       options( frozen\_headers="3"
                frozen\_rowheaders="1"
@@ -83,8 +110,9 @@ Display options can be added to the output to change the appearance, such as AUT
   run;
 
   ods tagsets.msoffice2k\_x close;
+```
 
-![](display_options.jpg)
+![](images/display_options.jpg)
 
 * * *
 
@@ -92,6 +120,7 @@ Display options can be added to the output to change the appearance, such as AUT
 
 When Excel imports the data created by ODS, it uses the general format to import this data unless there is a specific Excel format applied. There are things that occur that you should be aware of such as leading zeros are dropped. There are other various formatting issues that can occur if the SAS format does not match the Excel format. The Excel format is applied using the Microsoft mso-number-format CSS style property within the HTMLSTYLE= attribute. Specifying the LEADING\_ZERO= option preserves leading zeros on all data values. If a value has a leading zero it is detected and the text format is applied.
 
+```
 data one;
 retain zip account;
 set sashelp.class;
@@ -111,8 +140,9 @@ ods tagsets.msoffice2k\_x file="c:\\temp\\formatting.xls"
   run;
 
   ods tagsets.msoffice2k\_x close;
+```
 
-![](formatting.jpg)
+![](images/formatting.jpg)
 
 * * *
 
@@ -122,6 +152,7 @@ The HTML format does not support the multiple worksheets per workbook as the Spr
 
 You can add multiple workbooks per worksheet using the WORKSHEET\_SOURCE= option. To specify multiple worksheets per workbook, specify each file separated by commas with this option. To name the worksheet, prefix the file with the sheet name. If no sheet name is given, the sheet name is Table 1, Table 2. This method requires that the sheet name be generated first.
 
+```
   proc sort data=sashelp.class out=test;
   by age;
   run;
@@ -152,8 +183,9 @@ You can add multiple workbooks per worksheet using the WORKSHEET\_SOURCE= option
 
 
   ods tagsets.msoffice2k\_x close;
+```
 
-![](multi.jpg)
+![](images/multi.jpg)
 
 * * *
 
@@ -161,6 +193,7 @@ You can add multiple workbooks per worksheet using the WORKSHEET\_SOURCE= option
 
 You can create simple paneling using the PANCOLS= option, which places tables and graphs side-by-side in the worksheet. You can you also add this with other options to enhance the presentation of the worksheet.
 
+```
   ods tagsets.msoffice2k\_x  file="c:\\temp\\trash\\test\\panels.xls"
       options(panelcols="3") style=normal;
 
@@ -196,8 +229,9 @@ You can create simple paneling using the PANCOLS= option, which places tables an
 
 
  ods tagsets.msoffice2k\_x close;
+```
 
-![](panel.jpg)
+![](images/panel.jpg)
 
 * * *
 
@@ -205,6 +239,7 @@ You can create simple paneling using the PANCOLS= option, which places tables an
 
 Column headers can be rotated by specifying the ROTATE\_HEADERS= option with the degree you want the header rotated. You should specify this in conjunction with the HEIGHT= option. To specify the header be rotated on a single column, the HTMLSTYLE= option can be specified with the XXXX Microsoft CSS style property.
 
+```
   ods tagsets.msoffice2k\_x file="c:\\temp\\rotate.xls" style=normal
       options( rotate\_headers="45"
                height="60"  );
@@ -215,8 +250,9 @@ Column headers can be rotated by specifying the ROTATE\_HEADERS= option with the
   run;
 
   ods tagsets.msoffice2k\_x close;
+```
 
-![](rotate.jpg)
+![](images/rotate.jpg)
 
 * * *
 
@@ -224,6 +260,7 @@ Column headers can be rotated by specifying the ROTATE\_HEADERS= option with the
 
 Page Breaks can be added the output file by adding the PAGEBREAK\_ROW= option. This option specifies the row(s) that the page break should be added. The arguments for the page break are added and separated by commas to specify multiple rows that the page break should be added.
 
+```
  ods tagsets.msoffice2k\_x path="c:\\temp\\trash\\test" file="pagebreak.xls"
  options(embedded\_titles="no"
         pagebreak\_row="20,30,40,90");
@@ -232,9 +269,10 @@ proc print data=sashelp.orsales;
 run;
 
 
-ods tagsets.msoffice2k\_x close;;
+ods tagsets.msoffice2k\_x close;
+```
 
-![](pagebreak.jpg)
+![](images/pagebreak.jpg)
 
 * * *
 
@@ -242,6 +280,7 @@ ods tagsets.msoffice2k\_x close;;
 
 Excel macros can be executed when the file is opened or when the file is closed. This is done by using either the OPEN\_MACRO= or CLOSE\_MACRO= options. These options pass the path of an Excel file that includes the macro that you want to execute.
 
+```
  ods tagsets.msoffice2k\_x file="c:\\temp\\trash\\mcro.xls" style=normal
      options( open\_macro="'c:\\temp\\macro.xls'!test" );
 
@@ -249,11 +288,13 @@ Excel macros can be executed when the file is opened or when the file is closed.
  run;
 
  ods tagsets.msoffice2k\_x close;
+```
 
 * * *
 
 ### Excel Style Options
 
+```
  ods tagsets.msoffice2k\_x file="c:\\temp.xls"
      options(header\_bgcolor="beige"
              header\_fgcolor="brown"
@@ -269,5 +310,6 @@ Excel macros can be executed when the file is opened or when the file is closed.
  run;
 
  ods tagsets.msoffice2k\_x close;
+```
 
-![](styles.jpg)
+![](images/styles.jpg)
