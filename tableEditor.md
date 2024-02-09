@@ -189,7 +189,7 @@ ods tagsets.tableeditor close;
 
 The above example code produces the following output:
 
-![](images/Page%20Setup.jpg)
+![](images/Page%20Setup.png)
 * * *
 
 Zoom
