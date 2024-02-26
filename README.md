@@ -1,2 +1,2 @@
 # technical-support-doc
-Documentation from support.sas.com
+Code and examples originally published on support.sas.com
